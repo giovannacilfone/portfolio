@@ -2,7 +2,6 @@
 
 html, body
 {
- height: 100%;
   margin: 0;
   background: linear-gradient(180deg, #140B29 42%, #1F123E 77%, #291850 100%);
 }

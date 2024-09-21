@@ -1,9 +1,9 @@
 import { Box, styled, Typography } from "@mui/material";
-import redux from "../assets/redux.png";
-import react from "../assets/react.png";
-import figma from "../assets/figma.png";
-import ts from "../assets/ts.png";
-import mui from "../assets/mui.png";
+// import redux from "../assets/redux.png";
+// import react from "../assets/react.png";
+// import figma from "../assets/figma.png";
+// import ts from "../assets/ts.png";
+// import mui from "../assets/mui.png";
 import me from "../assets/me.jpeg";
 
 const ProfileCard = styled(Box)(({ theme }) => ({
@@ -19,19 +19,19 @@ const ProfileCard = styled(Box)(({ theme }) => ({
   boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.4)",
 }));
 
-const SkillsCard = styled(Box)(({ theme }) => ({
-  position: "relative",
-  padding: theme.spacing(3),
-  borderRadius: "4rem",
-  width: "3rem",
-  display: "flex",
-  height: "21.5rem",
-  alignItems: "center",
-  flexDirection: "column",
-  color: "white",
-  backgroundColor: "transparent",
-  boxShadow: "0px 4px 20px rgba(0, 0, 0,1",
-}));
+// const SkillsCard = styled(Box)(({ theme }) => ({
+//   position: "relative",
+//   padding: theme.spacing(3),
+//   borderRadius: "4rem",
+//   width: "3rem",
+//   display: "flex",
+//   height: "21.5rem",
+//   alignItems: "center",
+//   flexDirection: "column",
+//   color: "white",
+//   backgroundColor: "transparent",
+//   boxShadow: "0px 4px 20px rgba(0, 0, 0,1",
+// }));
 
 const BackgroundOverlay = styled(Box)(() => ({
   position: "absolute",
@@ -117,7 +117,7 @@ const AboutMe = () => {
             </Box>
           </Content>
         </ProfileCard>
-        <SkillsCard>
+        {/* <SkillsCard>
           <BackgroundOverlay />
 
           <Content>
@@ -132,7 +132,7 @@ const AboutMe = () => {
               <img src={figma} alt="figma" />
             </Box>
           </Content>
-        </SkillsCard>
+        </SkillsCard> */}
       </Box>
     </Box>
   );

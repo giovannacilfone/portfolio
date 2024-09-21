@@ -1,4 +1,4 @@
-import { Box, Dialog, DialogContent, Typography } from "@mui/material";
+import { Box, Dialog, DialogContent, Typography, useMediaQuery, useTheme } from "@mui/material";
 import FullStack from "../assets/certificates/FullStack.png";
 import UXUI from "../assets/certificates/UXUI.png";
 import PrinciplesUXUI from "../assets/certificates/principlesuxui.png";
@@ -11,6 +11,8 @@ import { useState } from "react";
 const Certificates = () => {
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleImageClick = (src: string) => {
     setSelectedImage(src);
@@ -27,29 +29,34 @@ const Certificates = () => {
     autoplaySpeed: 2000,
     speed: 400,
     slidesToShow: 3,
-    centerPadding: "1rem",
+    slidesToScroll: 1,
     infinite: true,
     centerMode: true,
-    padding: "0 10px",
-    slidesToScroll: 2,
+    centerPadding: "1rem",
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
+          slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: "0.5rem",
         },
       },
       {
-        breakpoint: 300,
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: false,
+          centerPadding: "0",
         },
       },
     ],
   };
 
   return (
-    <Box mt={3}>
+    <Box mt={3} ml="5%">
       {" "}
       <Box position="relative" display="inline-block" width="100%">
         <Typography
@@ -57,7 +64,7 @@ const Certificates = () => {
           component="span"
           sx={{
             fontFamily: "League Gothic",
-            fontSize: "4.5rem",
+            fontSize: isMobile ? "3rem" : "4.5rem",
             fontWeight: "bold",
             color: "#FFFF",
             position: "relative",
@@ -95,7 +102,11 @@ const Certificates = () => {
               },
             }}
           >
-            <img src={FullStack} alt="UXUI" style={{ width: "auto", height: "25rem" }} />
+            <img
+              src={FullStack}
+              alt="UXUI"
+              style={{ width: "auto", height: isMobile ? "16rem" : "25rem" }}
+            />
           </Box>
           <Box
             onClick={() => handleImageClick(UXUI)}
@@ -110,7 +121,11 @@ const Certificates = () => {
               },
             }}
           >
-            <img src={UXUI} alt="UXUI" style={{ width: "auto", height: "25rem" }} />
+            <img
+              src={UXUI}
+              alt="UXUI"
+              style={{ width: "auto", height: isMobile ? "16rem" : "25rem" }}
+            />
           </Box>
           <Box
             onClick={() => handleImageClick(PrinciplesUXUI)}
@@ -125,7 +140,11 @@ const Certificates = () => {
               },
             }}
           >
-            <img src={PrinciplesUXUI} alt="UXUI" style={{ width: "auto", height: "25rem" }} />
+            <img
+              src={PrinciplesUXUI}
+              alt="UXUI"
+              style={{ width: "auto", height: isMobile ? "16rem" : "25rem" }}
+            />
           </Box>
           <Box
             onClick={() => handleImageClick(AdvancedReact)}
@@ -141,7 +160,11 @@ const Certificates = () => {
               },
             }}
           >
-            <img src={AdvancedReact} alt="UXUI" style={{ width: "auto", height: "25rem" }} />
+            <img
+              src={AdvancedReact}
+              alt="UXUI"
+              style={{ width: "auto", height: isMobile ? "16rem" : "25rem" }}
+            />
           </Box>
         </Slider>
       </Box>

@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import {
   Timeline,
   TimelineItem,
@@ -9,15 +9,19 @@ import {
 } from "@mui/lab";
 
 const Experience = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
-    <Box mt={3}>
+    <Box mt={3} ml="5%">
       <Box position="relative" display="inline-block" width="100%">
         <Typography
           variant="h4"
           component="span"
           sx={{
             fontFamily: "League Gothic",
-            fontSize: "4.5rem",
+            fontSize: isMobile ? "3rem" : "4.5rem",
+
             fontWeight: "bold",
             color: "#FFFF",
             position: "relative",
