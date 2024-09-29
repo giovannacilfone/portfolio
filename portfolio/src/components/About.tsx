@@ -1,7 +1,14 @@
-import { Box, Typography, styled, useMediaQuery } from "@mui/material";
+import { Box, Button, Chip, Divider, Typography, useMediaQuery, styled } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
+import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import me from "../assets/me.jpeg";
-
+import redux from "../assets/redux.png";
+import react from "../assets/react.png";
+import figma from "../assets/figma.png";
+import ts from "../assets/ts.png";
+import mui from "../assets/mui.png";
+import { Link } from "react-router-dom";
 const BackgroundOverlay = styled(Box)(() => ({
   position: "absolute",
   top: 0,
@@ -14,18 +21,6 @@ const BackgroundOverlay = styled(Box)(() => ({
   zIndex: 1,
 }));
 
-const ProfileCard = styled(Box)(({ theme }) => ({
-  position: "relative",
-  padding: theme.spacing(6),
-  borderRadius: "4rem",
-  marginRight: "2%",
-  display: "flex",
-  height: "auto",
-  color: "white",
-  backgroundColor: "transparent",
-  boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.4)",
-}));
-
 const Content = styled(Box)(() => ({
   position: "relative",
   zIndex: 2,
@@ -33,101 +28,216 @@ const Content = styled(Box)(() => ({
 
 const About = () => {
   const theme = useTheme();
+  // const isCustomMobile = () => {
+  //   return window.innerWidth === 1024 && window.innerHeight === 768;
+  // };
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Box
       sx={{
         display: "flex",
-        ml: "5%",
-        mr: "5%",
-        flexDirection: "column",
+        alignItems: "center",
+        mt: isMobile ? "10%" : "6%",
+        flexDirection: isMobile ? "column" : "row",
+        justifyContent: "center",
       }}
     >
-      <Box display="flex" flexDirection="column" mt="4%">
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          width: isMobile ? "100%" : "50%",
+          ml: "5%",
+          mr: isMobile ? 0 : "2rem",
+        }}
+      >
+        <img
+          alt="Giovanna"
+          src={me}
+          style={{
+            borderRadius: "10rem",
+            border: "5px solid #705DF2",
+            width: isMobile ? 100 : 150,
+            height: isMobile ? 100 : 150,
+            marginBottom: "1rem",
+            marginRight: isMobile ? 0 : "2rem",
+          }}
+        />
+
         <Typography
-          sx={{ fontFamily: "Handlee", lineHeight: "1.5", fontSize: isMobile ? "2rem" : "4rem" }}
+          sx={{
+            fontFamily: "Handlee",
+            lineHeight: "1.5",
+            textAlign: "center",
+            mb: 3,
+            fontSize: isMobile ? "1.5rem" : "3rem",
+          }}
         >
           ¡Hi, I'm Giovanna!
         </Typography>
+
         <Typography
           sx={{
-            lineHeight: "1",
-            fontSize: isMobile ? "3rem" : "6rem",
+            lineHeight: 0.5,
+            fontSize: isMobile ? "2.5rem" : "6rem",
             fontFamily: "League Gothic",
+            color: "#FFFF",
           }}
         >
           FRONTEND DEVELOPER
         </Typography>
 
-        <Box position="relative" mb={5} display="inline-block" width="100%">
+        <Box mb={5} display="flex" alignItems="center" justifyContent="space-between" gap={2}>
           <Typography
-            component="span"
-            variant="h4"
             sx={{
               fontFamily: "League Gothic",
-              fontSize: isMobile ? "3rem" : "6rem",
+              fontSize: isMobile ? "2.5rem" : "6rem",
               fontWeight: "bold",
               color: "#6C63FF",
-              position: "relative",
-              backgroundColor: "#140B29",
-              zIndex: 1,
             }}
           >
             & UI DESIGNER
           </Typography>
-          <Box
+          <Chip
+            icon={<WorkHistoryIcon color="success" sx={{ color: "#705DF2" }} />}
+            label="3 YEARS"
             sx={{
-              position: "absolute",
-              bottom: "35%",
-              width: "100%",
-              height: "1rem",
-              backgroundColor: "#C6BBFF",
-              zIndex: 0,
+              fontFamily: "League Gothic",
+              backgroundColor: "#FFFF",
+              fontSize: isMobile ? "1rem" : "1.6rem",
+              padding: isMobile ? 0.5 : 2.5,
+              fontWeight: "bold",
+              height: isMobile ? "auto" : "3rem",
+              color: "#705DF2",
             }}
           />
         </Box>
       </Box>
-
-      <ProfileCard sx={{ width: isMobile ? "80%" : "70%" }}>
-        {!isMobile && <BackgroundOverlay />}
-        <Content>
-          {" "}
+      <Divider
+        orientation={isMobile ? "horizontal" : "vertical"}
+        flexItem
+        sx={{
+          borderColor: "#705DF2",
+          bgcolor: "#705DF2",
+          borderWidth: isMobile ? "2px" : "4px",
+          height: isMobile ? "auto" : "30rem",
+          width: isMobile ? "100%" : "0.1rem",
+          mb: isMobile ? "1rem" : 0,
+        }}
+      />
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: isMobile ? "column" : "row",
+          alignItems: "center",
+          width: "50%",
+          justifyContent: "center",
+          mt: 0,
+        }}
+      >
+        <Box
+          sx={{
+            width: isMobile ? "20rem" : "50rem",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 5,
+          }}
+        >
           <Box
             sx={{
+              position: "relative",
+              padding: theme.spacing(3),
+              borderRadius: "4rem",
+              width: isMobile ? "16rem" : "25rem",
               display: "flex",
+              height: isMobile ? "1rem" : "2rem",
               alignItems: "center",
-              flexDirection: isMobile ? "column" : "row",
+              justifyContent: "center",
+              color: "white",
+              backgroundColor: "transparent",
+              boxShadow: "0px 4px 20px rgba(0, 0, 0,1",
             }}
-            mt={1}
           >
-            <img
-              alt="Giovanna"
-              src={me}
-              style={{
-                borderRadius: "4rem",
-                width: isMobile ? 125 : 250,
-                height: isMobile ? 125 : 250,
-                marginBottom: isMobile ? 1 : 0,
-                marginRight: "20px",
-              }}
-            />
+            <BackgroundOverlay />
+
+            <Content>
+              <Box display="flex" flexDirection="row" alignItems="center" gap={isMobile ? 3 : 5}>
+                <img
+                  src={ts}
+                  alt="ts"
+                  style={{ width: isMobile ? "2rem" : "3rem", height: isMobile ? "2rem" : "3rem" }}
+                />
+                <img
+                  src={react}
+                  alt="react"
+                  style={{ width: isMobile ? "2rem" : "3rem", height: isMobile ? "2rem" : "3rem" }}
+                />
+
+                <img
+                  src={redux}
+                  alt="redux"
+                  style={{ width: isMobile ? "2rem" : "3rem", height: isMobile ? "2rem" : "3rem" }}
+                />
+
+                <img
+                  src={mui}
+                  alt="mui"
+                  style={{ width: isMobile ? "2rem" : "3rem", height: isMobile ? "2rem" : "3rem" }}
+                />
+
+                <img
+                  src={figma}
+                  alt="figma"
+                  style={{
+                    width: isMobile ? "1.5rem" : "2rem",
+                    height: isMobile ? "2rem" : "3rem",
+                  }}
+                />
+              </Box>
+            </Content>
+          </Box>
+          <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center">
             <Typography
               sx={{
                 fontFamily: "Manjari",
-                fontSize: isMobile ? "1rem" : "1.5rem",
-                ml: 2,
-                lineHeight: "1.5",
-                mt: isMobile ? 3 : 0,
+                fontSize: isMobile ? "1.5rem" : "2.2rem",
+                ml: isMobile ? 0 : "2rem",
+                textAlign: "center",
+                color: "#FFFF",
               }}
             >
-              {isMobile
-                ? "As a passionate frontend developer with 2.5 years of experience, I specialize in creating seamless and engaging user experiences using technologies such as React, Next.js, TypeScript, Material-UI, and Redux, among others. My expertise lies in crafting dynamic, responsive interfaces that balance aesthetics with functionality. In addition to my technical skills, I have a solid foundation in UX/UI design, supported by a course in the field and hands-on experience with Figma."
-                : "As a passionate frontend developer with 2.5 years of experience, I specialize in creating seamless and engaging user experiences using technologies such as React, Next.js, TypeScript, Material-UI, and Redux, among others. My expertise lies in crafting dynamic, responsive interfaces that balance aesthetics with functionality. In addition to my technical skills, I have a solid foundation in UX/UI design, supported by a course in the field and hands-on experience with Figma. I am committed to delivering innovative solutions that not only look great but also offer a superior user experience, reflecting my dedication to both design and development."}
+              {/* Diseñando soluciones digitales y desarrollando productos que simplifican la vida de los
+          usuarios. */}
+              Designing digital solutions and developing products that simplify users' lives.
             </Typography>
+            <Button
+              variant="contained"
+              component={Link}
+              to="https://www.linkedin.com/in/giovanna-cilfone/"
+              target="_blank"
+              rel="noopener noreferrer"
+              endIcon={<RocketLaunchIcon sx={{ color: "#FFFF" }} />}
+              sx={{
+                backgroundColor: "#705DF2",
+                borderRadius: "5rem",
+                color: "#FFFF",
+                fontSize: isMobile ? "1rem" : "2rem",
+                fontWeight: "bold",
+                mt: 2,
+                letterSpacing: "0.rem",
+                fontFamily: "League Gothic",
+              }}
+            >
+              Let's talk
+            </Button>
           </Box>
-        </Content>
-      </ProfileCard>
+        </Box>
+      </Box>
     </Box>
   );
 };

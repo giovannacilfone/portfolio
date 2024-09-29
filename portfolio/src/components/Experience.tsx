@@ -74,7 +74,14 @@ const Experience = () => {
                 <Typography variant="h5" mb={2}>
                   99 Minutos (Feb 2022 - Currently)
                 </Typography>
-                <Typography sx={{ fontFamily: "Manjari", fontSize: "1.2rem", lineHeight: "1.5" }}>
+                <Typography
+                  sx={{
+                    fontFamily: "Manjari",
+                    width: isMobile ? "18rem" : "50rem",
+                    fontSize: "1.2rem",
+                    lineHeight: "1.5",
+                  }}
+                >
                   My work in the billing development area involves creating and iterating on
                   user-centered interfaces, providing the finance department with an intuitive and
                   easy-to-use interface that also offers all the necessary functionalities to
@@ -113,7 +120,14 @@ const Experience = () => {
                 <Typography variant="h5" mb={2}>
                   Soy Henry (Aug 2021 - Dec 2021)
                 </Typography>
-                <Typography sx={{ fontFamily: "Manjari", fontSize: "1.2rem", lineHeight: "1.5" }}>
+                <Typography
+                  sx={{
+                    fontFamily: "Manjari",
+                    width: isMobile ? "18rem" : "50rem",
+                    fontSize: "1.2rem",
+                    lineHeight: "1.5",
+                  }}
+                >
                   With over 800 hours of coursework, I learned to develop web applications using the
                   most in-demand technologies in the market. <br />
                   <br />

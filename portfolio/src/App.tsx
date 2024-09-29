@@ -16,6 +16,7 @@ function App() {
           alignContent: "center",
           flexDirection: "column",
           height: "100vh",
+          width: "100%",
         }}
       >
         <NavBar />

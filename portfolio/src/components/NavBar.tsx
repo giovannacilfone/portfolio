@@ -1,10 +1,19 @@
-import { Box, Button, IconButton, Drawer, List, ListItem, ListItemText } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  Divider,
+} from "@mui/material";
 import { ReactNode, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import DownloadIcon from "@mui/icons-material/Download";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import CV from "../CV.pdf";
+import CV from "../CV-FRONTEND.pdf";
 import github from "../assets/contact/github.png";
 import wpp from "../assets/contact/wpp.png";
 import gmail from "../assets/contact/gmail.png";
@@ -15,6 +24,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 interface NavButtonProps {
   to: string;
   isActive: boolean;
+  isMobile: boolean;
   children: ReactNode;
 }
 interface ContactButtonProps {
@@ -22,17 +32,17 @@ interface ContactButtonProps {
   children: ReactNode;
 }
 
-const NavButton = ({ to, isActive, children }: NavButtonProps) => {
+const NavButton = ({ to, isActive, isMobile, children }: NavButtonProps) => {
   return (
     <Button
       sx={{
         color: "white",
         fontFamily: "League Gothic",
-        fontSize: "2rem",
+        fontSize: isMobile ? "1rem" : "1.5rem",
         lineHeight: "1.5",
         backgroundColor: isActive ? "#6C63FF" : "transparent",
         borderRadius: isActive ? "3rem" : "0",
-        padding: "0.5rem 1.5rem",
+        padding: isMobile ? "0.5rem" : "1rem",
         transition: "all 0.5s ease",
       }}
       variant="text"
@@ -60,7 +70,6 @@ const ContactButton = ({ to, children }: ContactButtonProps) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          p: 0,
         }}
       >
         {children}
@@ -127,7 +136,6 @@ const NavBar = () => {
               flexShrink: 0,
               "& .MuiDrawer-paper": {
                 bgcolor: "#291850",
-                color: "#ffff",
                 p: 2,
               },
             }}
@@ -135,46 +143,55 @@ const NavBar = () => {
             onClose={handleDrawerToggle}
           >
             <IconButton onClick={handleDrawerToggle} sx={{ alignSelf: "flex-end", p: 2 }}>
-              <CloseIcon />
+              <CloseIcon sx={{ color: "white" }} />
             </IconButton>
             <List
               sx={{
                 width: "250px",
-
-                paddingTop: 0,
               }}
             >
               <ListItem component={Link} to="/" onClick={handleDrawerToggle}>
-                <ListItemText primary="Home" />
+                <ListItemText primary="Home" sx={{ color: "white" }} />
               </ListItem>
+              <Divider sx={{ mb: 1, borderColor: "#705DF2" }} />
               <ListItem component={Link} to="/projects" onClick={handleDrawerToggle}>
-                <ListItemText primary="Experience & Projects" />
-              </ListItem>
+                <ListItemText primary="Experience & Projects" sx={{ color: "white" }} />
+              </ListItem>{" "}
+              <Divider sx={{ mb: 1, borderColor: "#705DF2" }} />
               <ListItem component={Link} to="/certificates" onClick={handleDrawerToggle}>
-                <ListItemText primary="Certificates" />
-              </ListItem>
+                <ListItemText primary="Certificates" sx={{ color: "white" }} />
+              </ListItem>{" "}
+              <Divider sx={{ mb: 1, borderColor: "#705DF2" }} />
               <ListItem component="a" href={CV} download="CV/Giovanna-Cilfone/Frontend.pdf">
-                <ListItemText primary="Download CV" />
+                <ListItemText primary="Download CV" sx={{ color: "white" }} />
               </ListItem>
             </List>
           </Drawer>
         </>
       ) : (
         <Box display="flex" sx={{ mr: "5%" }} justifyContent="flex-end" gap="0.5rem" color="white">
-          <NavButton to="/" isActive={location.pathname === "/"}>
+          <NavButton to="/" isActive={location.pathname === "/"} isMobile={isMobile}>
             Home
           </NavButton>
-          <NavButton to="/projects" isActive={location.pathname === "/projects"}>
+          <NavButton
+            to="/projects"
+            isActive={location.pathname === "/projects"}
+            isMobile={isMobile}
+          >
             Experience & Projects
           </NavButton>
-          <NavButton to="/certificates" isActive={location.pathname === "/certificates"}>
+          <NavButton
+            to="/certificates"
+            isActive={location.pathname === "/certificates"}
+            isMobile={isMobile}
+          >
             Certificates
           </NavButton>
           <Button
             sx={{
               color: "white",
               fontFamily: "League Gothic",
-              fontSize: "2rem",
+              fontSize: "1.3rem",
               lineHeight: "1.5",
               borderRadius: "3rem",
               transition: "all 0.5s ease",
